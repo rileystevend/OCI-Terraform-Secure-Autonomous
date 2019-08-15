@@ -77,14 +77,14 @@ resource "oci_core_security_list" "private_security_list" {
     source    = "10.0.2.0/24"
     stateless = false
 
-    tcp_options {
+    tcp_options = {
       // these represent destination port range
       "min" = 22
       "max" = 22
     }
   }
   // allow inbound port 8080 traffic from anywhere
-  ingress_security_rules = {
+  ingress_security_rules {
     protocol  = "6"           // tcp
     source    = "10.0.2.0/24"
     stateless = false
@@ -96,7 +96,7 @@ resource "oci_core_security_list" "private_security_list" {
     }
   }
   // allow inbound port 80 traffic from anywhere
-  ingress_security_rules = {
+  ingress_security_rules {
     protocol  = "6"           // tcp
     source    = "10.0.2.0/24"
     stateless = false
