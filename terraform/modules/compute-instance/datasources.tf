@@ -6,7 +6,7 @@ data "oci_identity_availability_domains" "ads" {
 data "template_file" "init" {
   template = "${file(var.BootStrapFile)}"
 
-  vars {
+  vars = {
     region             = "${var.region}"
     user_ocid          = "${var.user_ocid}"
     fingerprint        = "${var.fingerprint}"

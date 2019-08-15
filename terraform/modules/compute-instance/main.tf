@@ -12,7 +12,7 @@ resource "oci_core_instance" "PrivateInstance" {
     hostname_label   = "${var.compute_hostname2}"
   }
 
-  metadata {
+  metadata = {
     ssh_authorized_keys = "${file(var.ssh_public_key)}"
     user_data           = "${base64encode(data.template_file.init.rendered)}"
   }
@@ -48,11 +48,11 @@ resource "oci_core_instance" "PublicInstance" {
     source_id   = "${var.InstanceImageOCID}" #${var.InstanceImageOCID[var.region]}"
   }
 
-  metadata {
+  metadata = {
     ssh_authorized_keys = "${file(var.ssh_public_key)}"
   }
 
-  timeouts = {
+  timeouts {
     create = "60m"
   }
 }

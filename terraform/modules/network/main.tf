@@ -72,39 +72,39 @@ resource "oci_core_security_list" "private_security_list" {
     protocol    = "all"
   }
   // allow inbound ssh traffic from a specific port
-  ingress_security_rules = {
+  ingress_security_rules {
     protocol  = "6"           // tcp
     source    = "10.0.2.0/24"
     stateless = false
 
     tcp_options {
       // these represent destination port range
-      "min" = 22
-      "max" = 22
+      min = 22
+      max = 22
     }
   }
   // allow inbound port 8080 traffic from anywhere
-  ingress_security_rules = {
+  ingress_security_rules {
     protocol  = "6"           // tcp
     source    = "10.0.2.0/24"
     stateless = false
 
     tcp_options {
       // these represent destination port range
-      "min" = 8080
-      "max" = 8080
+      min = 8080
+      max = 8080
     }
   }
   // allow inbound port 80 traffic from anywhere
-  ingress_security_rules = {
+  ingress_security_rules {
     protocol  = "6"           // tcp
     source    = "10.0.2.0/24"
     stateless = false
 
     tcp_options {
       // these represent destination port range
-      "min" = 80
-      "max" = 80
+      min = 80
+      max = 80
     }
   }
   // allow inbound icmp traffic of a specific type
